@@ -5,7 +5,7 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-const users = ['Ayuba',"Musa","Hyedima","Moses"];
+const users = ['Joshua',"Mbaya","Alex","Mary","Jude","Abba","Grace"];
 
 app.use(express.static(__dirname + "/www"));
 
