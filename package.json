@@ -1,0 +1,16 @@
+{
+  "name": "Live Search",
+  "version": "1.0.0",
+  "description": "Live Search",
+  "main": "server.js",
+  "scripts": {
+    "test": "mocha",
+    "start": "npm install && node src/server.js"
+  },
+  "author": "Ayuba and Shams",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1"
+  }
+}

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Live Search</title>
+  <meta content="" name="descriptison">
+  <meta content="" name="keywords">
+
+  <script src="https://unpkg.com/@reactivex/rxjs@5.0.3/dist/global/Rx.js"></script>
+</head>
+
+<body>
+   <input id="searchBox" type="text" value='' name="searchBox" />
+   <p id="suggestionsText"></p>
+</body>
+
+<script type="text/javascript">
+   function getText(){
+      let x = document.getElementById("searchBox").value;
+      return x;
+   }
+  
+   // console.log(x);
+   let suggestionsText = document.getElementById("suggestionsText");
+   let InputStreaming = Rx.Observable.fromEvent(searchBox, 'keyup') 
+
+   .switchMap(searchKey => Rx.Observable.ajax(`/users?searchText=${getText()}`) 
+   .map(resp => ({
+              "status" : resp["status"] == 200,
+              "details" : resp["status"] == 200 ? resp["response"] : []
+            })
+          )
+        )
+
+   .subscribe(data => {
+     console.log(data)
+     console.log(getText());
+   for( let prop in data.details){
+      suggestionsText.innerHTML = data.details[prop];
+   }
+   })
+
+</script>
+
+</html>
